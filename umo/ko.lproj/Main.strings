@@ -1,0 +1,15 @@
+
+/* Class = "UIViewController"; title = "MyPage"; ObjectID = "EAk-EP-AtS"; */
+"EAk-EP-AtS.title" = "MyPage";
+
+/* Class = "UILabel"; text = "마이페이지"; ObjectID = "SPD-ai-2r8"; */
+"SPD-ai-2r8.text" = "마이페이지";
+
+/* Class = "UILabel"; text = "피드"; ObjectID = "Z49-Wq-IKm"; */
+"Z49-Wq-IKm.text" = "피드";
+
+/* Class = "UIViewController"; title = "Feeds"; ObjectID = "ioC-Xk-pdc"; */
+"ioC-Xk-pdc.title" = "Feeds";
+
+/* Class = "UITabBarItem"; title = " "; ObjectID = "nFB-KF-oJs"; */
+"nFB-KF-oJs.title" = " ";
