@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
 
 class LoginViewController: UIViewController {
 
@@ -37,6 +38,24 @@ class LoginViewController: UIViewController {
                 _alertController.addAction(_okAction)
                 self.present(_alertController, animated: true, completion: nil)
             } else {
+                if let uid = authResult?.user.uid {
+                    UserDefaults.standard.set(uid, forKey: "uid")
+                }
+                Firestore.firestore()
+                    .collection("user")
+                    .document(authResult!.user.uid)
+                    .getDocument{(documentSnapshot, error) in
+                        if let error = error {
+                            print("Error: \(error)")
+                            return
+                        }
+                        if let email = documentSnapshot!.data()!["email"] as? String {
+                            UserDefaults.standard.set(email, forKey: "email")
+                        }
+                        if let nickname = documentSnapshot!.data()!["nickname"] as? String {
+                            UserDefaults.standard.set(nickname, forKey: "nickname")
+                        }
+                }
                 guard let mainVC = self.storyboard?.instantiateViewController(identifier: "MainViewContoller") else {return}
                 mainVC.modalPresentationStyle = .fullScreen
                 mainVC.navigationItem.hidesBackButton = true
