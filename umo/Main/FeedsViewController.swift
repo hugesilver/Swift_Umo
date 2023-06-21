@@ -10,7 +10,12 @@ import Firebase
 
 class FeedsViewController: UIViewController {
     @IBOutlet weak var feedsTableView: UITableView!
-    @IBOutlet weak var uploadButton: UIButton!
+    
+    
+    @IBOutlet weak var refreshButton: UIButton!
+    @IBAction func onTouchUpInsideRefreshButton(_ sender: Any) {
+        fetchFeeds()
+    }
     
     @IBAction func onTouchUpInsideUploadButton(_ sender: Any) {
         guard let uploadVC = self.storyboard?.instantiateViewController(identifier: "UploadFeedViewController") else {return}
@@ -36,6 +41,9 @@ class FeedsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refreshButton.setTitle("", for: .normal)
+        refreshButton.setTitle("", for: .highlighted)
 
         feedsTableView.dataSource = self
         feedsTableView.rowHeight = 625
